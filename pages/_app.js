@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import '@/styles/globals.css';
 import { SWRConfig } from 'swr';
 import Layout from '@/components/Layout';
-import RouteGuard from "@/components/routeGuard";
+import RouteGuard from "@/components/RouteGuard";
 
 function MyApp({ Component, pageProps }) {
   return (
