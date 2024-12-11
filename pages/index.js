@@ -28,7 +28,7 @@ export default function Home() {
                 </Col>
                 <Col lg={6}>
                     <p>
-                        The Metropolitan Museum of Art was founded in 1870 with its mission to bring art and art education to the American people. The museum's permanent collection consists of works of art from classical antiquity, ancient Egypt, nearly all European masters, and extensive American and modern art.
+                        The Metropolitan Museum of Art was founded in 1870 with its mission to bring art and art education to the American people. The museums permanent collection consists of works of art from classical antiquity, ancient Egypt, nearly all European masters, and extensive American and modern art.
                     </p>
                 </Col>
                 <Col lg={6}>
