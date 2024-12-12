@@ -10,25 +10,36 @@ export default function AdvancedSearch() {
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
 
   const submitForm = (data) => {
-    // Construct query string for search
-    let queryString = "searchBy=true";
+    // Construct query string
+    const queryParams = [];
 
+    if (data.searchBy) {
+      queryParams.push(`searchBy=${encodeURIComponent(data.searchBy)}`);
+    }
     if (data.geoLocation) {
-      queryString += `&geoLocation=${data.geoLocation}`;
+      queryParams.push(`geoLocation=${encodeURIComponent(data.geoLocation)}`);
     }
     if (data.medium) {
-      queryString += `&medium=${data.medium}`;
+      queryParams.push(`medium=${encodeURIComponent(data.medium)}`);
+    }
+    if (data.isOnView) {
+      queryParams.push(`isOnView=true`);
+    }
+    if (data.isHighlight) {
+      queryParams.push(`isHighlight=true`);
+    }
+    if (data.q) {
+      queryParams.push(`q=${encodeURIComponent(data.q)}`);
     }
 
-    queryString += `&isOnView=${data.isOnView || false}`;
-    queryString += `&isHighlight=${data.isHighlight || false}`;
-    queryString += `&q=${data.q}`;
+    const queryString = queryParams.join("&");
 
-    // Save query string to search history
-    setSearchHistory((current) => [...current, queryString]);
-
-    // Redirect to artwork page with query string
-    router.push(`/artwork?${queryString}`);
+    if (queryString) {
+      setSearchHistory((current) =>
+        Array.isArray(current) ? [...current, queryString] : [queryString]
+      );
+      router.push(`/artwork?${queryString}`);
+    }
   };
 
   return (
@@ -40,23 +51,25 @@ export default function AdvancedSearch() {
             <Form.Control
               type="text"
               placeholder="Enter your search query"
-              {...register("q", { required: true })}
+              {...register("q", { required: "Search query is required." })}
               className={errors.q ? "is-invalid" : ""}
             />
-            {errors.q && (
-              <div className="invalid-feedback">This field is required.</div>
-            )}
+            <Form.Control.Feedback type="invalid">
+              {errors.q?.message}
+            </Form.Control.Feedback>
           </Form.Group>
         </Col>
       </Row>
       <Row>
         <Col md={4}>
-          <Form.Label>Search By</Form.Label>
-          <Form.Select {...register("searchBy")} className="mb-3">
-            <option value="title">Title</option>
-            <option value="tags">Tags</option>
-            <option value="artistOrCulture">Artist or Culture</option>
-          </Form.Select>
+          <Form.Group className="mb-3">
+            <Form.Label>Search By</Form.Label>
+            <Form.Select {...register("searchBy")}>
+              <option value="title">Title</option>
+              <option value="tags">Tags</option>
+              <option value="artistOrCulture">Artist or Culture</option>
+            </Form.Select>
+          </Form.Group>
         </Col>
         <Col md={4}>
           <Form.Group className="mb-3">
@@ -67,8 +80,7 @@ export default function AdvancedSearch() {
               {...register("geoLocation")}
             />
             <Form.Text className="text-muted">
-              Case Sensitive String ,
-              with multiple values separated by the | operator
+              Case Sensitive String, with multiple values separated by the | operator.
             </Form.Text>
           </Form.Group>
         </Col>
@@ -81,30 +93,31 @@ export default function AdvancedSearch() {
               {...register("medium")}
             />
             <Form.Text className="text-muted">
-              Case Sensitive String 
-               with multiple values separated by the |
-              operator
+              Case Sensitive String, with multiple values separated by the | operator.
             </Form.Text>
           </Form.Group>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Form.Check
-            type="checkbox"
-            label="Highlighted"
-            {...register("isHighlight")}
-          />
-          <Form.Check
-            type="checkbox"
-            label="Currently on View"
-            {...register("isOnView")}
-          />
+          <Form.Group className="mb-3">
+            <Form.Check
+              type="checkbox"
+              label="Highlighted"
+              {...register("isHighlight")}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Check
+              type="checkbox"
+              label="Currently on View"
+              {...register("isOnView")}
+            />
+          </Form.Group>
         </Col>
       </Row>
       <Row>
         <Col>
-          <br />
           <Button variant="primary" type="submit">
             Submit
           </Button>
