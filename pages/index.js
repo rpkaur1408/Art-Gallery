@@ -4,7 +4,7 @@
 * 
 *	https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html 
 * 
-*	Assignment: 2247 / 6 * Student Name:  
+*	Assignment: 2247 / 6 * Student Name:  Rehatpreet kaur
 *	Student Email: your.email@myseneca.ca 
 *	Course/Section: WEB422/ZAA * Vercel URL:  https://art-gallery-blue-ten.vercel.app/
 * 

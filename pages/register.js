@@ -1,13 +1,13 @@
 import { Card, Form, Alert, Button } from "react-bootstrap";
 import { useState } from 'react';
-import { registerUser } from "@/lib/authenticate";  // Import registerUser function for registration
+import { registerUser } from "@/lib/authenticate";  
 import { useRouter } from 'next/router';
 
 export default function Register() {
   const [warning, setWarning] = useState("");
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");  // Add password2 for confirm password
+  const [password2, setPassword2] = useState("");  
   const router = useRouter();
 
   // Handle registration form submission
