@@ -1,13 +1,15 @@
+ 
 /**************************************************************************** 
 *	I declare that this assignment is my own work in accordance with the Seneca Academic * Policy. No part of this assignment has been copied manually or electronically from * any other source (including web sites) or distributed to other students. 
 * 
 *	https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html 
 * 
-*	Assignment: 2247 / 4 * Student Name:  Rehatpreet Kaur
-*	Student Email: rpkaur4@myseneca.ca 
-*	Course/Section: WEB422/ZAA 
+*	Assignment: 2247 / 6 * Student Name:  
+*	Student Email: your.email@myseneca.ca 
+*	Course/Section: WEB422/ZAA * Vercel URL:  https://art-gallery-blue-ten.vercel.app/
 * 
 *****************************************************************************/ 
+
 
 import { Row, Col, Image } from 'react-bootstrap';
 
