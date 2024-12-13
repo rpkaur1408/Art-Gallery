@@ -1,33 +1,47 @@
-import { useAtom } from 'jotai';
-import { favouritesAtom } from '@/store'; // Import favouritesAtom from the store
-import ArtworkCard from '@/components/ArtworkCard'; // Component to display each artwork
-import { Row, Col, Card } from 'react-bootstrap';
+import React, { useEffect } from "react";
+import { useAtom } from "jotai";
+import { favouritesAtom } from "../store";
+import ArtworkCard from "../components/ArtworkCard";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import { getFavourites } from "../lib/userData";
 
 export default function Favourites() {
-  const [favouritesList] = useAtom(favouritesAtom); // Get the favourites list from Jotai atom
+    const [favouritesList, setFavouritesList] = useAtom(favouritesAtom);
 
-  // Prevent rendering if favouritesList is not yet initialized
-  if (!favouritesList) return null;
+    useEffect(() => {
+        async function fetchFavourites() {
+            const favourites = await getFavourites();
+            setFavouritesList(favourites);
+        }
+        fetchFavourites();
+    }, [setFavouritesList]);
 
-  return (
-    <>
-      <h1>Favourites</h1>
-      {favouritesList.length === 0 ? (
-        <Card>
-          <Card.Body>
-            <h4>Nothing here</h4>
-            <p>Try adding some artwork to your favourites list!</p>
-          </Card.Body>
-        </Card>
-      ) : (
-        <Row className="gy-4">
-          {favouritesList.map((objectID) => (
-            <Col lg={3} key={objectID}>
-              <ArtworkCard objectID={objectID} />
-            </Col>
-          ))}
-        </Row>
-      )}
-    </>
-  );
+    if (!favouritesList) return null;
+
+    return (
+        <Container style={{ marginTop: "20px" }}>
+            <Row className="gy-4">
+                {favouritesList.length > 0 ? (
+                    favouritesList.map((objectID) => (
+                        <Col key={objectID} sm={12} md={6} lg={4}>
+                            <ArtworkCard objectID={objectID} />
+                        </Col>
+                    ))
+                ) : (
+                    <Col>
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>
+                                    <h4>Nothing Here</h4>
+                                </Card.Title>
+                                <Card.Text>
+                                    Try adding some new artwork to the list.
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                )}
+            </Row>
+        </Container>
+    );
 }
