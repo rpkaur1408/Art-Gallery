@@ -1,40 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎨 Art Gallery
 
-## Getting Started
+A modern, full-stack art discovery platform built using **Next.js App Router**, **Jotai**, and **SWR**.  
+The application allows authenticated users to **search for artworks**, **save favorites**, and **explore detailed metadata** from the Metropolitan Museum of Art through a seamless and responsive experience.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Layer                 | Technologies Used                                                      |
+|-----------------------|-------------------------------------------------------------------------|
+| **Frontend**          | Next.js (App Router, Client Components), React, React-Bootstrap         |
+| **Backend**           | Custom Express.js API Server (for authentication, favourites, history) |
+| **Authentication**    | JWT (JSON Web Tokens), Route Guards                                     |
+| **State Management**  | Jotai (Atoms)                                                          |
+| **Data Fetching**     | SWR (Stale-While-Revalidate)                                            |
+| **Forms**             | React Hook Form                                                        |
+| **Styling**           | Bootstrap 5                                                            |
+| **Language**          | JavaScript (ES6+)                                                      |
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 🚀 Key Features
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **User Authentication**: Secure registration and login with JWT tokens and protected routes.
+- **Advanced Artwork Search**: Powerful search form supporting filters by keyword, medium, location, and artwork status.
+- **Favorites Management**: Save and manage your favorite artworks directly to your personal account.
+- **Search History Tracking**: Automatically records and displays your previous search queries.
+- **Paginated Results**: Seamlessly browse large collections of artwork with dynamic pagination controls.
+- **Detailed Artwork Pages**: View high-resolution images and rich metadata (artist, dimensions, era, and more).
+- **Protected Routes**: Secure pages using custom route guards that verify JWT tokens on navigation.
+- **Persistent User Data**: Favorites and search history stored securely through backend APIs.
+- **Optimized Performance**: Data caching with SWR, preloading, and fast client navigation.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## 🖼️ Artwork Exploration and User Experience
 
-To learn more about Next.js, take a look at the following resources:
+- **Artwork Cards**: Browse grid-based cards with thumbnails, titles, and quick links to detailed views.
+- **Artwork Detail View**: Access comprehensive information about any artwork, including provenance and artist background.
+- **Favorites Page**: Curate your personal gallery of favorite pieces with real-time update support.
+- **Search History Page**: Instantly revisit any past search with one click.
+- **Empty States and Feedback**: Friendly UI prompts when no favorites or history entries are found.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🧠 Project Highlights
 
-## Deploy on Vercel
+- **JWT-based Authentication**: Full control over login sessions using secure local storage and middleware validation.
+- **Jotai State Management**: Lightweight, atomic state control for favorites and search history, improving app responsiveness.
+- **SWR Data Fetching**: Fast and reliable artwork loading with automatic caching and background revalidation.
+- **Dynamic Forms with Validation**: Robust and flexible search input handling using React Hook Form.
+- **Express API Integration**: Scalable custom API endpoints for managing user data without third-party database lock-in.
+- **Accessibility and Responsiveness**: Mobile-first design principles with Bootstrap 5 for a professional look across devices.
+- **Environment Configuration**: Easily switch between development and production setups with environment variables.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
