@@ -1,4 +1,4 @@
-# 🎨 Art Gallery
+# 🎨 ExhibitHub
 
 A modern, full-stack art discovery platform built using **Next.js App Router**, **Jotai**, and **SWR**.  
 The application allows authenticated users to **search for artworks**, **save favorites**, and **explore detailed metadata** from the Metropolitan Museum of Art through a seamless and responsive experience.
